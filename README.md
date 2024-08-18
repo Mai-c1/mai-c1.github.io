@@ -20,8 +20,29 @@
 https://github.com/Mai-c1/mai-c1.github.io.git
 ```
 
-3、在docs/notes文件夹下创建属于自己的md文档,以名字拼音为文件名
+3、下载依赖包
 
-<img src="assets/image-20240817161407647.png" alt="image-20240817161407647" style="float:left"/>
+```
+npm i
+```
 
-4、
+4、创建文件后运行查看效果
+
+```
+npm run docs:dev
+```
+
+5、提交到仓库
+
+```
+git add .
+git commit -m "本次提交的内容"
+git push
+```
+
+6、运行sh脚本一键部署
+
+```
+sh .\deploy.sh
+```
+
