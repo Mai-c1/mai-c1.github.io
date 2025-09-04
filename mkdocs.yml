@@ -1,0 +1,49 @@
+site_name: Mai Wiki
+site_url: https://Mai-c1.github.io
+repo_url: https://github.com/Mai-c1/mai-c1.github.io
+repo_name: Mai-c1/mai-c1.github.io
+
+
+theme:
+  name: material
+  code:
+    theme: monokai  # 可以尝试不同的主题如 monokai, dracula, atom-one-dark 等
+    linenums: true  # 显示行号（可选）
+  palette:
+    # 亮色调
+    - scheme: default
+      primary: white
+      accent: red
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    # 暗色调
+    - scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+  features:
+    - minify
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.copy       # 代码复制按钮
+    - content.code.annotate   # 代码注释
+
+nav:
+  - '简介':
+      - 'Getting Started': index.md
+  - '基础算法1':
+      - '算法1简介': 基础算法1/index.md
+      - '格式化输入输出': 基础算法1/格式化输入输出.md
+
+# 启用 markdown extensions
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: "mermaid"
+          class: "mermaid"
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
