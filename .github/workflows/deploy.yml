@@ -2,7 +2,8 @@ name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # 或你使用的默认分支名
 
 permissions:
   contents: write
@@ -10,37 +11,20 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # 确保获取所有历史记录
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-    
-    - name: Install dependencies
-      run: |
-        pip install mkdocs-material
-        pip install mkdocs-minify-plugin
-    
-    - name: Build site
-      run: mkdocs build --site-dir site
-    
-    - name: Create .nojekyll file
-      run: touch ./site/.nojekyll
-    
-    - name: Check build output
-      run: |
-        echo "List of generated files:"
-        ls -la ./site
-        echo "Check if index.html exists:"
-        if [ -f ./site/index.html ]; then echo "index.html exists"; else echo "index.html missing"; fi
-    
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
-        publish_branch: gh-pages  # 明确指定部署到gh-pages分支
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force
