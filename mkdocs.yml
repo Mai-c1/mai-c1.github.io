@@ -2,7 +2,7 @@ site_name: Mai Wiki
 site_url: https://Mai-c1.github.io
 repo_url: https://github.com/Mai-c1/mai-c1.github.io
 repo_name: Mai-c1/mai-c1.github.io
-edit_url: : https://github.com/Mai-c1/mai-c1.github.io/edit/main/docs/
+edit_url: https://github.com/Mai-c1/mai-c1.github.io/edit/main/docs/
 theme:
   name: material
   code:
