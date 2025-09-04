@@ -3,46 +3,28 @@ name: Deploy MkDocs to GitHub Pages
 on:
   push:
     branches:
-      - main  # 触发部署的分支
+      - main  # 或你使用的默认分支名
 
 permissions:
-  contents: write  # 确保有写入权限
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0  # 获取完整历史，避免部署问题
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
-          cache: 'pip'  # 缓存依赖，加速部署
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs mkdocs-material
 
-      - name: Clean previous builds
-        run: rm -rf site/  # 清除旧的构建文件，确保全新构建
-
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          mkdocs gh-deploy --force --remote-name origin --config-file mkdocs.yml
-
-      - name: Deploy to GitHub Pages environment
-        id: deployment
-        uses: actions/deploy-pages@v4
+        run: mkdocs gh-deploy --force
