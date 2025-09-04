@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Getting Started
 
 ## 欢迎来到 **Mai Wiki**

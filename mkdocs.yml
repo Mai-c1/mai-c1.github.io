@@ -6,7 +6,9 @@ edit_url: : https://github.com/Mai-c1/mai-c1.github.io/edit/main/docs/
 theme:
   name: material
   code:
-    theme: monokai 
+    theme:
+      name: monokai
+      custom_dir: overrides
     linenums: true  # 显示行号（可选）
   palette:
     # 亮色调
