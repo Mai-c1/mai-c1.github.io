@@ -3,11 +3,10 @@ site_url: https://Mai-c1.github.io
 repo_url: https://github.com/Mai-c1/mai-c1.github.io
 repo_name: Mai-c1/mai-c1.github.io
 
-
 theme:
   name: material
   code:
-    theme: monokai  # 可以尝试不同的主题如 monokai, dracula, atom-one-dark 等
+    theme: monokai 
     linenums: true  # 显示行号（可选）
   palette:
     # 亮色调
