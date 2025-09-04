@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 确保获取所有历史记录
     
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -26,8 +28,19 @@ jobs:
     - name: Build site
       run: mkdocs build --site-dir site
     
+    - name: Create .nojekyll file
+      run: touch ./site/.nojekyll
+    
+    - name: Check build output
+      run: |
+        echo "List of generated files:"
+        ls -la ./site
+        echo "Check if index.html exists:"
+        if [ -f ./site/index.html ]; then echo "index.html exists"; else echo "index.html missing"; fi
+    
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4  # 使用最新版本
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./site
+        publish_branch: gh-pages  # 明确指定部署到gh-pages分支
