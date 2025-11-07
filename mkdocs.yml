@@ -1,8 +1,7 @@
-site_name: Mai Wiki
+site_name: 笔记百科
 site_url: https://Mai-c1.github.io
 repo_url: https://github.com/Mai-c1/mai-c1.github.io
 repo_name: Mai-c1/mai-c1.github.io
-edit_url: https://github.com/Mai-c1/mai-c1.github.io/edit/main/docs/
 theme:
   name: material
   custom_dir: overrides
@@ -26,7 +25,6 @@ theme:
         icon: material/weather-night
         name: Switch to dark mode
   features:
-    - edit_page_button  # 强制显示编辑按钮（部分主题默认隐藏）
     - minify
     - navigation.tabs
     - navigation.tabs.sticky
@@ -36,15 +34,25 @@ theme:
 nav:
   - '简介':
       - 'Getting Started': index.md
+  - '语法进阶':
+      - '简介': 语法进阶/index.md
+      - '字符': 语法进阶/字符.md
   - '基础算法1':
       - '算法1简介': 基础算法1/index.md
       - '格式化输入输出': 基础算法1/格式化输入输出.md
+      - '排序':
+          - '排序简介': 基础算法1/排序简介.md
 
 # 启用 markdown extensions
 markdown_extensions:
+  - pymdownx.arithmatex:
+        generic: true
   - pymdownx.superfences:
       custom_fences:
         - name: "mermaid"
           class: "mermaid"
           format: !!python/name:pymdownx.superfences.fence_code_format
-
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
